@@ -28,4 +28,9 @@ class AcidenteTest {
         assertEquals(2, a1.getVeiculos().size());
     }
 
+    @Test
+    void toStringTest(){
+        assertEquals(r1, a1.getRodovia());
+        assertEquals("R1 - Veículos Envolvidos: 0 - Feridos: 0 - Vítimas Fatais: 0 - Janeiro", a1.toString());
+    }
 }

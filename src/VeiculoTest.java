@@ -46,7 +46,7 @@ class VeiculoTest {
         assertEquals(2023, v1.getAnoFb());
 
         v1.setBicicleta(true);
-        assertTrue(v1.isBicicleta);
+        assertTrue(v1.isBicicleta());
 
         v1.setPEnvolvidas(ps);
         assertEquals(ps, v1.getPEnvolvidas());

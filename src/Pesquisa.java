@@ -1,7 +1,3 @@
-import java.io.FilterOutputStream;
-import java.lang.reflect.Array;
-import java.sql.PreparedStatement;
-import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 
 public class Pesquisa {
@@ -23,17 +19,15 @@ public class Pesquisa {
     }
 
     //Listar a quantidade de acidentes para cada nível de periculosidade da rodovia
-    public static String listarGrauPerigo(ArrayList<Rodovia> rodovias){
+    public static String listarGrauPerigo(ArrayList<Acidente> acidentes){
         int baixo = 0;
         int medio = 0;
         int alto = 0;
-        for(Rodovia r : rodovias){
-            if(r.getGPerigo().equals("Baixo")){
-                baixo+=r.getQtdAcidentes();
-            }else if(r.getGPerigo().equals("Médio")){
-                medio+=r.getQtdAcidentes();
-            }else{
-                alto+=r.getQtdAcidentes();
+        for(Acidente a : acidentes){
+            switch (a.getRodovia().getGPerigo()) {
+                case "Baixo" -> baixo++;
+                case "Médio" -> medio++;
+                case "Alto" -> alto++;
             }
         }
         return  "Periculosidade baixa: "+baixo+

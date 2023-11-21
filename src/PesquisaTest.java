@@ -64,10 +64,11 @@ class PesquisaTest {
         b1.adicionarPessoaEnvolvida(c3);
         b2.adicionarPessoaEnvolvida(c4);
 
+
         a1.adicionarVeiculoEnvolvido(v1);
-        a2.adicionarVeiculoEnvolvido(v2);
-        a3.adicionarVeiculoEnvolvido(b1);
-        a4.adicionarVeiculoEnvolvido(b2);
+        a2.adicionarVeiculoEnvolvido(b1);
+        a3.adicionarVeiculoEnvolvido(b2);
+        a4.adicionarVeiculoEnvolvido(v2);
 
         acidentes.add(a1);
         acidentes.add(a2);
@@ -75,7 +76,47 @@ class PesquisaTest {
         acidentes.add(a4);
 
         assertEquals("R1 - Veículos Envolvidos: 1 - Feridos: 1 - Vítimas Fatais: 1 - Janeiro\n" +
-                "R2 - Veículos Envolvidos: 1 - Feridos: 1 - Vítimas Fatais: 1 - Janeiro",Pesquisa.listarEmbriagados(acidentes));
+                "R2 - Veículos Envolvidos: 1 - Feridos: 1 - Vítimas Fatais: 1 - Fevereiro\n",Pesquisa.listarEmbriagados(acidentes));
+    }
+
+    @Test
+    void listarGrauPerigoTest(){
+        ArrayList<Acidente> acidentes = new ArrayList<>();
+        acidentes.add(a1);
+        acidentes.add(a2);
+        acidentes.add(a3);
+        acidentes.add(a4);
+        assertEquals("Periculosidade baixa: 1\n" +
+                "Periculosidade média: 2\n" +
+                "Periculosidade alta: 1", Pesquisa.listarGrauPerigo(acidentes));
+
+    }
+
+    @Test
+    void listarVeiculosCargaTest(){
+        ArrayList<Veiculo> veiculos = new ArrayList<>();
+        veiculos.add(v1);
+        veiculos.add(v2);
+        veiculos.add(vC1);
+        veiculos.add(b1);
+        veiculos.add(b2);
+        assertEquals("2010 - 0 - Veículo de carga - 2000.0 Kg\n",Pesquisa.listarVeiculosCarga(veiculos));
+    }
+
+    @Test
+    void listarAcidenteBicicletasTest(){
+        ArrayList<Acidente> acidentes = new ArrayList<>();
+        a1.adicionarVeiculoEnvolvido(v1);
+        a2.adicionarVeiculoEnvolvido(b1);
+        a3.adicionarVeiculoEnvolvido(b2);
+        a4.adicionarVeiculoEnvolvido(v2);
+        a1.adicionarVeiculoEnvolvido(b1);
+        a4.adicionarVeiculoEnvolvido(b2);
+        acidentes.add(a1);
+        acidentes.add(a2);
+        acidentes.add(a3);
+        acidentes.add(a4);
+        assertEquals("R2 - Médio",Pesquisa.listarAcidenteBicicletas(acidentes));
     }
 
 }

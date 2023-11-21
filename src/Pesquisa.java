@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Pesquisa {
     //Listar todos os acidentes que algum condutor estava embriagado
-    public static void listarEmbriagados(ArrayList<Acidente> acidentes){
+    public static String listarEmbriagados(ArrayList<Acidente> acidentes){
         String result = "";
         for(Acidente a : acidentes){
             for(Veiculo v : a.getVeiculos()){
@@ -19,11 +19,11 @@ public class Pesquisa {
                 }
             }
         }
-        System.out.println(result);
+        return result;
     }
 
     //Listar a quantidade de acidentes para cada nível de periculosidade da rodovia
-    public static void listarGrauPerigo(ArrayList<Rodovia> rodovias){
+    public static String listarGrauPerigo(ArrayList<Rodovia> rodovias){
         int baixo = 0;
         int medio = 0;
         int alto = 0;
@@ -36,23 +36,23 @@ public class Pesquisa {
                 alto+=r.getQtdAcidentes();
             }
         }
-        System.out.println( "Periculosidade baixa: "+baixo+
+        return  "Periculosidade baixa: "+baixo+
                 "\nPericulosidade média: "+medio+
-                "\nPericulosidade alta: "+alto);
+                "\nPericulosidade alta: "+alto;
     }
 
     //Listar todos os veículos de carga que se envolveram em acidentes
-    public  static void listarVeiculosCarga(ArrayList<Veiculo> veiculos){
+    public  static String listarVeiculosCarga(ArrayList<Veiculo> veiculos){
         String result = "";
         for(Veiculo v : veiculos){
             if(v instanceof VeiculoCarga){
                 result += v +"\n";
             }
         }
-        System.out.println(result);
+        return result;
     }
     //Listar rodovia onde ocorreu mais acidentes com bicicletas
-    public static void listarAcidenteBicicletas(ArrayList<Acidente> acidentes){
+    public static String listarAcidenteBicicletas(ArrayList<Acidente> acidentes){
         ArrayList<Rodovia> rodovias = new ArrayList<>();
         Rodovia rFim = new Rodovia("","");
         boolean aux;
@@ -80,10 +80,10 @@ public class Pesquisa {
                 aux2 = r.getQtdAcidentes();
                 rFim = r;
             }
-        }System.out.println(rFim);
+        }return rFim.toString();
     }
     //Listar rodovia com mais acidentes com vítimas fatais
-    public static void listarAcidenteVitimasFatais(ArrayList<Acidente> acidentes){
+    public static String listarAcidenteVitimasFatais(ArrayList<Acidente> acidentes){
         ArrayList<Rodovia> rodovias = new ArrayList<>();
         Rodovia rFim = new Rodovia("","");
         boolean aux;
@@ -106,10 +106,10 @@ public class Pesquisa {
                 rFim = r;
                 aux2 = r.getQtdAcidentes();
             }
-        }System.out.println(rFim);
+        }return rFim.toString();
     }
     //Listar rodovias com acidentes no carnaval
-    public static void listarAcidentesCarnaval(ArrayList<Acidente> acidentes){
+    public static String listarAcidentesCarnaval(ArrayList<Acidente> acidentes){
         String result =  "";
         boolean aux = false;
         ArrayList<Rodovia> rodovias = new ArrayList<>();
@@ -127,10 +127,10 @@ public class Pesquisa {
         }for(Rodovia r : rodovias){
             result += r+"\n";
         }
-        System.out.println(result);
+        return result;
     }
     //Listar acidentes com veículos novos
-    public static void listarAcidentesVeiculosNovos(ArrayList<Acidente> acidentes){
+    public static String listarAcidentesVeiculosNovos(ArrayList<Acidente> acidentes){
         boolean aux;
         String result = "";
         for(Acidente a: acidentes){
@@ -142,6 +142,6 @@ public class Pesquisa {
             }if(aux){
                 result += a+"\n";
             }
-        }System.out.println(result);
+        }return result;
     }
 }

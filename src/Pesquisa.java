@@ -50,7 +50,6 @@ public class Pesquisa {
         ArrayList<Rodovia> rodovias = new ArrayList<>();
         Rodovia rFim = new Rodovia("","");
         boolean aux;
-        int aux2 = 0;
         for(Acidente a : acidentes){
             aux = false;
             for(Veiculo v : a.getVeiculos()){
@@ -70,8 +69,7 @@ public class Pesquisa {
                 }
             }
         }for(Rodovia r : rodovias){
-            if(r.getQtdAcidentes() > aux2){
-                aux2 = r.getQtdAcidentes();
+            if(r.getQtdAcidentes() > rFim.getQtdAcidentes()){
                 rFim = r;
             }
         }return rFim.toString();
@@ -81,7 +79,6 @@ public class Pesquisa {
         ArrayList<Rodovia> rodovias = new ArrayList<>();
         Rodovia rFim = new Rodovia("","");
         boolean aux;
-        int aux2 = 0;
         for(Acidente a : acidentes){
             aux = false;
             if(a.getVitimasFatais() >= 1){
@@ -96,16 +93,15 @@ public class Pesquisa {
                 }
             }
         }for(Rodovia r : rodovias){
-            if(r.getQtdAcidentes() > aux2){
+            if(r.getQtdAcidentes() > rFim.getQtdAcidentes()){
                 rFim = r;
-                aux2 = r.getQtdAcidentes();
             }
         }return rFim.toString();
     }
     //Listar rodovias com acidentes no carnaval
     public static String listarAcidentesCarnaval(ArrayList<Acidente> acidentes){
         String result =  "";
-        boolean aux = false;
+        boolean aux;
         ArrayList<Rodovia> rodovias = new ArrayList<>();
         for(Acidente a : acidentes){
             aux = false;
